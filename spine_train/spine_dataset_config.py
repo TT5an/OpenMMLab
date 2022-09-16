@@ -1,9 +1,9 @@
 # dataset settings
 dataset_type = 'SpineSegDataset'
-data_root = r'F:\MyCode\mmsegmentation\data\SpineSeg'
+data_root = 'F:/MyCode/mmsegmentation/data/SpineSeg'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
-img_scale = (256, 256)
+img_scale = (512, 512)
 crop_size = (256, 256)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
@@ -42,18 +42,18 @@ data = dict(
         dataset=dict(
             type=dataset_type,
             data_root=data_root,
-            img_dir='images\\training',
-            ann_dir='annotations\\training',
+            img_dir=r'images/training',
+            ann_dir=r'annotations/training',
             pipeline=train_pipeline)),
     val=dict(
         type=dataset_type,
         data_root=data_root,
-        img_dir='images\\validation',
-        ann_dir='annotations\\validation',
+        img_dir=r'images/validation',
+        ann_dir=r'annotations/validation',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
         data_root=data_root,
-        img_dir='images\\validation',
-        ann_dir='annotations\\validation',
+        img_dir=r'images/validation',
+        ann_dir=r'annotations/validation',
         pipeline=test_pipeline))

@@ -55,15 +55,15 @@ model = dict(
     train_cfg=dict(),
     test_cfg=dict(mode='slide', crop_size=256, stride=170))
 dataset_type = 'SpineSegDataset'
-data_root = 'F:\MyCode\mmsegmentation\data\SpineSeg'
+data_root = 'F:/MyCode/mmsegmentation/data/SpineSeg'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
-img_scale = (256, 256)
+img_scale = (512, 512)
 crop_size = (256, 256)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations'),
-    dict(type='Resize', img_scale=(256, 256), ratio_range=(1.0, 1.0)),
+    dict(type='Resize', img_scale=(512, 512), ratio_range=(1.0, 1.0)),
     dict(type='RandomCrop', crop_size=(256, 256), cat_max_ratio=0.75),
     dict(type='RandomFlip', prob=0.5),
     dict(type='PhotoMetricDistortion'),
@@ -80,7 +80,7 @@ test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='MultiScaleFlipAug',
-        img_scale=(256, 256),
+        img_scale=(512, 512),
         flip=False,
         transforms=[
             dict(type='Resize', keep_ratio=True),
@@ -102,15 +102,15 @@ data = dict(
         times=40000,
         dataset=dict(
             type='SpineSegDataset',
-            data_root='F:\MyCode\mmsegmentation\data\SpineSeg',
-            img_dir='images\training',
-            ann_dir='annotations\training',
+            data_root='F:/MyCode/mmsegmentation/data/SpineSeg',
+            img_dir='images/training',
+            ann_dir='annotations/training',
             pipeline=[
                 dict(type='LoadImageFromFile'),
                 dict(type='LoadAnnotations'),
                 dict(
                     type='Resize',
-                    img_scale=(256, 256),
+                    img_scale=(512, 512),
                     ratio_range=(1.0, 1.0)),
                 dict(
                     type='RandomCrop',
@@ -129,14 +129,14 @@ data = dict(
             ])),
     val=dict(
         type='SpineSegDataset',
-        data_root='F:\MyCode\mmsegmentation\data\SpineSeg',
-        img_dir='images\validation',
-        ann_dir='annotations\validation',
+        data_root='F:/MyCode/mmsegmentation/data/SpineSeg',
+        img_dir='images/validation',
+        ann_dir='annotations/validation',
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(
                 type='MultiScaleFlipAug',
-                img_scale=(256, 256),
+                img_scale=(512, 512),
                 flip=False,
                 transforms=[
                     dict(type='Resize', keep_ratio=True),
@@ -152,14 +152,14 @@ data = dict(
         ]),
     test=dict(
         type='SpineSegDataset',
-        data_root='F:\MyCode\mmsegmentation\data\SpineSeg',
-        img_dir='images\validation',
-        ann_dir='annotations\validation',
+        data_root='F:/MyCode/mmsegmentation/data/SpineSeg',
+        img_dir='images/validation',
+        ann_dir='annotations/validation',
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(
                 type='MultiScaleFlipAug',
-                img_scale=(256, 256),
+                img_scale=(512, 512),
                 flip=False,
                 transforms=[
                     dict(type='Resize', keep_ratio=True),
