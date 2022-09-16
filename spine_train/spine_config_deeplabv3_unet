@@ -1,0 +1,17 @@
+_base_ = [
+    '../_base_/models/deeplabv3_unet_s5-d16.py',
+    r'F:\MyCode\mmsegmentation\spine_train\spine_dataset_config.py', '../_base_/default_runtime.py',
+    '../_base_/schedules/schedule_40k.py'
+]
+
+
+norm_cfg = dict(type='BN')
+model = dict(
+    decode_head=dict(ignore_index=255,
+                     loss_decode=[dict(type='CrossEntropyLoss', loss_name='loss_ce', loss_weight=1.0),
+                                  dict(type='DiceLoss', loss_name='loss_dice', loss_weight=3.0)]),
+    auxiliary_head=dict(ignore_index=255,
+                        loss_decode=[dict(type='CrossEntropyLoss', loss_name='loss_ce', loss_weight=1.0),
+                                     dict(type='DiceLoss', loss_name='loss_dice', loss_weight=3.0)]),
+)
+evaluation = dict(interval=4000, metric='mDice')
