@@ -1,7 +1,8 @@
 _base_ = [
-    '../_base_/models/deeplabv3_unet_s5-d16.py',
-    r'F:\MyCode\mmsegmentation\spine_train\spine_dataset_config.py', '../_base_/default_runtime.py',
-    '../_base_/schedules/schedule_40k.py'
+    r'F:\MyCode\mmsegmentation\configs\_base_\models\deeplabv3_unet_s5-d16.py',
+    r'F:\MyCode\mmsegmentation\spine_train\spine_dataset_config.py',
+    r'F:\MyCode\mmsegmentation\configs\_base_\default_runtime.py',
+    r'F:\MyCode\mmsegmentation\configs\_base_\schedules/schedule_40k.py'
 ]
 
 

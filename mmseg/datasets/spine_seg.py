@@ -19,7 +19,7 @@ class SpineSegDataset(CustomDataset):
     def __init__(self, **kwargs):
         super(SpineSegDataset, self).__init__(
             img_suffix='.png',
-            seg_map_suffix='_manual1.png',
+            #seg_map_suffix='_manual1.png',
             reduce_zero_label=False,
             **kwargs)
         assert self.file_client.exists(self.img_dir)
