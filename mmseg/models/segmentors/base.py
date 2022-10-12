@@ -3,6 +3,7 @@ import warnings
 from abc import ABCMeta, abstractmethod
 from collections import OrderedDict
 
+import cv2
 import mmcv
 import numpy as np
 import torch
@@ -274,8 +275,10 @@ class BaseSegmentor(BaseModule, metaclass=ABCMeta):
         # convert to BGR
         color_seg = color_seg[..., ::-1]
 
-        img = img * (1 - opacity) + color_seg * opacity
+        #img = img * (1 - opacity) + color_seg * opacity # 原始 叠加图像
+        img = color_seg
         img = img.astype(np.uint8)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         # if out_file specified, do not show image in window
         if out_file is not None:
             show = False

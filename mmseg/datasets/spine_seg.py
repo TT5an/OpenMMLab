@@ -14,7 +14,8 @@ class SpineSegDataset(CustomDataset):
 
     CLASSES = ('background', 'spine')
 
-    PALETTE = [[120, 120, 120], [6, 230, 230]]
+    #PALETTE = [[120, 120, 120], [6, 230, 230]]
+    PALETTE = [[0, 0, 0], [255, 255, 255]]
 
     def __init__(self, **kwargs):
         super(SpineSegDataset, self).__init__(
